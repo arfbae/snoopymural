@@ -1,1 +1,39 @@
-<h1>Snoopy Mural AR Testing Page</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://jsdelivr.net"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      
+        
+        <!-- EFFECT 1: Sparkling Stars (A looping transparent video mapped over the sky area) -->
+        <a-video src="#starsVideo" width="1" height="0.7" position="0 0.3 0" material="alphaTest: 0.5"></a-video>
+
+        <!-- EFFECT 2: Snoopy's "zZz" Dream Bubble (Floating slightly in front of the wall) -->
+        <a-image src="#dreamBubble" width="0.3" height="0.3" position="-0.4 0.2 0.1"
+                 animation="property: position; to: -0.4 0.25 0.1; dur: 2000; dir: alternate; loop: true; easing: easeInOutSine">
+        </a-image>
+
+        <!-- EFFECT 3: Moving Lizard Eyes (Shifting left to right checking out the butterfly) -->
+        <a-image src="#lizardEyes" width="0.15" height="0.08" position="0.2 -0.1 0.02"
+                 animation="property: position; to: 0.23 -0.1 0.02; dur: 3000; dir: alternate; loop: true; easing: easeInOutQuad">
+        </a-image>
+
+      
+    </a-scene>
+
+    <a-assets>
+      <video id="starsVideo" src="assets/stars_loop.mp4" loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+      <img id="dreamBubble" src="assets/snoopy_zzz.png" crossorigin="anonymous" />
+      <img id="lizardEyes" src="assets/lizard_eyes.png" crossorigin="anonymous" />
+    </a-assets>
+  </body>
+</html>
+
